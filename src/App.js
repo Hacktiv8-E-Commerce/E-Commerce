@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Dashboard from './pages/dashboard'
 import Detail from './pages/detail'
+import Cart from './pages/cart'
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
     //     </a>
     //   </header>
     // </div>
-    <Detail />
+    <Cart />
   );
 }
 

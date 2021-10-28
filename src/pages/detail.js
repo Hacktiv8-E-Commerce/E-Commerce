@@ -10,16 +10,16 @@ function Detail() {
             <Header />
             <Container style={{ minWidth: '768px' }}>
                 <Row>
-                    <Col lg={6} className="me-4">
+                    <Col lg={6} className="p-4">
                         <Image
                             src="./assets/clothes.jpg"
                             alt="First slide"
-                            style={{ objectFit: 'cover' }}
+                            style={{ objectFit: 'cover', objectPosition: 'center' }}
                             rounded
                             width="100%"
                         />
                     </Col>
-                    <Col className="py-5">
+                    <Col className="p-5">
                         <Stack gap={5}>
                             <Stack>
                                 <h2>Mens Casual Premium Slim Fit T-Shirts</h2>
