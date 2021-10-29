@@ -1,17 +1,21 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAmazon } from "@fortawesome/free-brands-svg-icons";
+import { Container, Row, Col } from "react-bootstrap";
 
 const Footer = () => {
   return (
-    <div class="d-flex bd-highlight">
-      <div class="p-4 w-100 bd-highlight">
-        Created by: Fadila Kharisma Yoga & Difen Yedidya Sjamsu
-      </div>
-      <div class="p-4 flex-shrink-  1 bd-highlight">
-        <FontAwesomeIcon icon={faAmazon} />
-      </div>
-    </div>
+    <Container>
+      <Row>
+        <Col xs={12} md={10}>
+          <p>Created by: Fadila Kharisma Yoga & Difen Yedidya Sjamsu</p>
+        </Col>
+        <Col xs={6} md={2}>
+          <FontAwesomeIcon icon={faAmazon} />
+          lazone
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

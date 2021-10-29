@@ -1,8 +1,9 @@
 import React from "react";
-import Header from "../components/header";
-import Promo from "../components/promo";
-import Items from "../components/items";
-import Footer from "../components/footer";
+import { Header, Promo, Items, Footer } from "../components/index";
+// import Header from "../components/header";
+// import Promo from "../components/promo";
+// import Items from "../components/items";
+// import Footer from "../components/footer";
 import { Stack } from "react-bootstrap";
 
 function Dashboard() {

@@ -1,7 +1,6 @@
 import "./App.css";
+import { Detail, Dashboard, AdminDashboard } from "./pages/index";
 import LoginModal from "./components/LoginModal";
-import Dashboard from "./pages/dashboard";
-import Detail from "./pages/detail";
 
 function App() {
   return (
@@ -9,6 +8,7 @@ function App() {
       <LoginModal />
       <Detail />
       <Dashboard />
+      <AdminDashboard />
     </div>
   );
 }
