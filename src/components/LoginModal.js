@@ -1,34 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
+import LoginForm from "./LoginForm";
 
-const LoginModal = () => {
-  const [show, setShow] = useState(false);
+function VerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="md"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">Login</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <LoginForm />
+      </Modal.Body>
+    </Modal>
+  );
+}
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+function LoginModal() {
+  const [modalShow, setModalShow] = useState(false);
 
   return (
-    <div>
-      <Button variant="white" onClick={handleShow}>
+    <>
+      <Button variant="primary" onClick={() => setModalShow(true)}>
         Login
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Login Account</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </div>
+      <VerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
+    </>
   );
-};
+}
 
 export default LoginModal;
