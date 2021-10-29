@@ -3,7 +3,7 @@ import { Container, Carousel, Image } from 'react-bootstrap'
 
 function Promo() {
     return (
-        <Container style={{ minWidth: '768px' }}>
+        <Container style={{ minWidth: '768px' }} className="p-4 pt-0">
             <Carousel
                 interval={2000}
                 pause='hover'

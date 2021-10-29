@@ -27,7 +27,7 @@ function Profile() {
 
 function Header() {
     return (
-        <Navbar className="shadow-sm p-3 mb-5" >
+        <Navbar className="shadow-sm p-3 mb-5" style={{ minWidth: '768px' }}>
             <Container fluid>
                 <Stack direction="horizontal" className="w-100" gap={3}>
                     <Navbar.Brand href="#home" className="m-0">

@@ -8,7 +8,7 @@ function Dashboard() {
     return (
         <>
             <Header />
-            <Stack gap={4}>
+            <Stack gap={4} >
                 <Promo />
                 <Items />
             </Stack>
