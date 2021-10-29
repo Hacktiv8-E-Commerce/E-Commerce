@@ -12,27 +12,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { faAmazon } from "@fortawesome/free-brands-svg-icons";
-import Avatar from "react-avatar";
-
-function Profile() {
-  return (
-    <Button
-      variant="outline-light"
-      className="shadow-none"
-      style={{ color: "black", border: "none" }}
-    >
-      <Stack direction="horizontal" gap={3}>
-        <Avatar
-          src="/assets/vkontakte.jpg"
-          size="40"
-          round={true}
-          className="my-auto"
-        />
-        <p className="my-auto">Fadila</p>
-      </Stack>
-    </Button>
-  );
-}
+import Profile from "./profile";
 
 function Header() {
   return (
@@ -86,7 +66,18 @@ function Header() {
             </Button>
             <Nav>
               <NavDropdown
-                title={<Profile />}
+                title={
+                  <Button
+                    variant="outline-light"
+                    className="shadow-none"
+                    style={{ color: "black", border: "none" }}
+                  >
+                    <Stack direction="horizontal" gap={3}>
+                      <Profile />
+                      <p className="my-auto">Fadila</p>
+                    </Stack>
+                  </Button>
+                }
                 id="nav-dropdown-profile"
                 align="end"
               >

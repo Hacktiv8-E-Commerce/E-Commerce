@@ -6,3 +6,5 @@ export { default as LoginModal } from "./LoginModal";
 export { default as Promo } from "./promo";
 export { default as Regulerstar } from "./regulerstar";
 export { default as Solidstar } from "./solidstar";
+export { default as Profile } from "./profile";
+export { default as HeaderAdmin } from "./headerAdmin";
