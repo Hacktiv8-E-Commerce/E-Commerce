@@ -31,10 +31,10 @@ function Items() {
                                         />
                                         <Stack>
                                             <Stack direction="horizontal">
-                                                <span className="me-auto" style={{ fontSize: '1vmax', color: '#282C34', fontWeight: '600' }}>{item.title.slice(0, 20) + (item.title.length > 20 ? "..." : "")}</span>
+                                                <span className="me-auto" style={{ fontSize: '1vmax', color: '#282C34', fontWeight: '600' }}>{item.title.slice(0, 18) + (item.title.length > 18 ? "..." : "")}</span>
                                                 <span style={{ fontSize: '1vmax', color: '#282C34', fontWeight: '600' }}>${item.price}</span>
                                             </Stack>
-                                            <span style={{ fontSize: '0.9vmax', color: '#757575', fontWeight: '600' }}>{`Tersedia ${item.category}`}</span>
+                                            <span style={{ fontSize: '0.9vmax', color: '#757575', fontWeight: '600' }}>{`${item.category}`}</span>
                                         </Stack>
                                     </Stack>
                                 </Link>

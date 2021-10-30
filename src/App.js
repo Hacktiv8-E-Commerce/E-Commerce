@@ -7,8 +7,12 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify([]));
+  })
   return (
     <Router>
       <Switch>
