@@ -13,6 +13,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import Avatar from 'react-avatar';
+import { Link } from "react-router-dom";
 
 function Profile() {
     return (
@@ -30,16 +31,18 @@ function Header() {
         <Navbar className="shadow-sm p-3 mb-5" style={{ minWidth: '768px' }}>
             <Container fluid>
                 <Stack direction="horizontal" className="w-100" gap={3}>
-                    <Navbar.Brand href="#home" className="m-0">
-                        <Image
-                            alt=""
-                            src="/assets/react-bootstrap.svg"
-                            width="30"
-                            height="30"
-                            className="d-inline-block align-top"
-                        />{' '}
-                        React Bootstrap
-                    </Navbar.Brand>
+                    <Link to={`/`} className="text-decoration-none">
+                        <Navbar.Brand href="#home" className="m-0">
+                            <Image
+                                alt=""
+                                src="/assets/react-bootstrap.svg"
+                                width="30"
+                                height="30"
+                                className="d-inline-block align-top"
+                            />{' '}
+                            <span>React Bootstrap</span>
+                        </Navbar.Brand>
+                    </Link>
                     <Nav
                         className="my-2 my-lg-0"
                         style={{ maxHeight: '100px' }}
@@ -66,9 +69,11 @@ function Header() {
                         </InputGroup.Text>
                     </InputGroup>
                     <Stack direction="horizontal" gap={1}>
-                        <Button variant="outline-light" className="shadow-none my-auto" style={{ color: 'black', border: 'none' }} >
-                            <FontAwesomeIcon icon={faShoppingCart} size="lg" />
-                        </Button>
+                        <Link to={'/cart'}>
+                            <Button variant="outline-light" className="shadow-none my-auto" style={{ color: 'black', border: 'none' }} >
+                                <FontAwesomeIcon icon={faShoppingCart} size="lg" />
+                            </Button>
+                        </Link>
                         <Nav>
                             <NavDropdown title={<Profile />} id="nav-dropdown-profile" align="end">
                                 <NavDropdown.Item eventKey="4.1">Logout</NavDropdown.Item>
