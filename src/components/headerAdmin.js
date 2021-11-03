@@ -2,14 +2,7 @@ import React from "react";
 import Profile from "./profile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAmazon } from "@fortawesome/free-brands-svg-icons";
-import {
-  Navbar,
-  Container,
-  Nav,
-  NavDropdown,
-  Button,
-  Stack,
-} from "react-bootstrap";
+import { Navbar, Container, Nav, NavDropdown, Stack } from "react-bootstrap";
 
 function HeaderAdmin() {
   return (
@@ -30,16 +23,11 @@ function HeaderAdmin() {
           <Nav>
             <NavDropdown
               title={
-                <Button
-                  variant="outline-danger"
-                  className="shadow-none"
+                <Profile
                   style={{ color: "white", border: "none" }}
-                >
-                  <Stack direction="horizontal" gap={3}>
-                    <Profile />
-                    <p className="my-auto">Admin-A</p>
-                  </Stack>
-                </Button>
+                  pic="/assets/profilePic.jpg"
+                  name="admin-A"
+                />
               }
               id="nav-dropdown-profile"
               align="end"

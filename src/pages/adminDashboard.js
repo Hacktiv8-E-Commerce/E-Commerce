@@ -1,5 +1,5 @@
 import React from "react";
-import { Table } from "react-bootstrap";
+import { Table, Image, Form, Button } from "react-bootstrap";
 
 const AdminDashboard = () => {
   return (
@@ -8,29 +8,35 @@ const AdminDashboard = () => {
         <thead>
           <tr>
             <th>Product</th>
-            <th>Price</th>
-            <th>Sold</th>
-            <th>Income</th>
+            <th>Product Name</th>
+            <th>Stock</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>product1</td>
-            <td>$10</td>
-            <td>12</td>
-            <td>$120</td>
-          </tr>
-          <tr>
-            <td>product2</td>
-            <td>$10</td>
-            <td>12</td>
-            <td>$120</td>
-          </tr>
-          <tr>
-            <td>product3</td>
-            <td>$10</td>
-            <td>12</td>
-            <td>$120</td>
+          <tr className="mb-3">
+            <td>
+              <Image src="holder.js/171x180" rounded />
+            </td>
+            <td>
+              <Form.Group
+                className="mx-auto"
+                controlId="exampleForm.ControlTextarea1"
+              >
+                <Form.Control as="textarea" rows={2} />
+              </Form.Group>
+            </td>
+            <td>
+              <Form.Group
+                className="col-md-2 mx-auto"
+                controlId="exampleForm.ControlTextarea1"
+              >
+                <Form.Control as="textarea" rows={2} />
+              </Form.Group>
+            </td>
+            <td>
+              <Button type="update">Update</Button>
+            </td>
           </tr>
         </tbody>
       </Table>

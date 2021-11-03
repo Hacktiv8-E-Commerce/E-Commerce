@@ -67,16 +67,11 @@ function Header() {
             <Nav>
               <NavDropdown
                 title={
-                  <Button
-                    variant="outline-light"
-                    className="shadow-none"
+                  <Profile
                     style={{ color: "black", border: "none" }}
-                  >
-                    <Stack direction="horizontal" gap={3}>
-                      <Profile />
-                      <p className="my-auto">Fadila</p>
-                    </Stack>
-                  </Button>
+                    pic="/assets/vkontakte.jpg"
+                    name="admin-A"
+                  />
                 }
                 id="nav-dropdown-profile"
                 align="end"

@@ -1,14 +1,20 @@
 import React from "react";
 import Avatar from "react-avatar";
+import { Button, Stack } from "react-bootstrap";
 
-function Profile() {
+function Profile(props) {
   return (
-    <Avatar
-      src="/assets/vkontakte.jpg"
-      size="40"
-      round={true}
-      className="my-auto"
-    />
+    <Button
+      variant="outline-danger"
+      className="shadow-none"
+      style={props.style}
+    >
+      <Stack direction="horizontal" gap={3}>
+        <Avatar src={props.pic} size="40" round={true} className="my-auto" />
+
+        <p className="my-auto">{props.name}</p>
+      </Stack>
+    </Button>
   );
 }
 
