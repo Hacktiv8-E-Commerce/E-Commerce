@@ -32,7 +32,7 @@ function Header() {
             <Container fluid>
                 <Stack direction="horizontal" className="w-100" gap={3}>
                     <Link to={`/`} className="text-decoration-none">
-                        <Navbar.Brand href="#home" className="m-0">
+                        <Navbar.Brand className="m-0">
                             <Image
                                 alt=""
                                 src="/assets/react-bootstrap.svg"

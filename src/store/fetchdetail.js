@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const setDetail = (productId) => {
+export const fetchdetail = (productId) => {
     return async (dispatch) => {
         const res = await axios.get(`https://fakestoreapi.com/products/${productId}`)
         const data = await res.data
@@ -10,12 +10,3 @@ export const setDetail = (productId) => {
         })
     }
 }
-
-// export const setDetail = (filter) => {
-//     return (dispatch) => {
-//         dispatch({
-//             type: "SET_DETAIL",
-//             payload: filter
-//         })
-//     }
-// }

@@ -5,7 +5,8 @@ import Regulerstar from '../components/regulerstar'
 import Solidstar from '../components/solidstar'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, } from "react-router-dom";
-import { setDetail } from '../store/setDetail'
+import { fetchdetail } from '../store/fetchdetail'
+import { setcart } from '../store/setcart'
 
 function Detail() {
     const state = useSelector((state) => state)
@@ -14,13 +15,9 @@ function Detail() {
 
     useEffect(() => {
         // let filter = state.product.filter(item => item.id == productId)
-        dispatch(setDetail(productId))
+        dispatch(fetchdetail(productId))
         // dispatch(setDetail(filter))
     }, [])
-
-    function onlyUnique(value, index, self) {
-        return self.indexOf(value) === index;
-    }
 
     function rating(solid, regular) {
         return <>{Array.from(Array(solid), (e, i) => {
@@ -30,11 +27,8 @@ function Detail() {
         })}</>
     }
 
-    function addToCart(item, unique) {
-        let uniquevalue = JSON.parse(localStorage.getItem('cart')).filter(unique);
-        uniquevalue.push(item)
-
-        localStorage.setItem('cart', JSON.stringify(uniquevalue));
+    function addToCart(item) {
+        setcart(item)
     }
 
     return (
@@ -75,7 +69,7 @@ function Detail() {
                                                 </Stack>
                                             </Stack>
                                         </Stack>
-                                        <Button onClick={() => addToCart(`${item.id}`, onlyUnique)} variant="primary" className="w-75" style={{ background: '#4F46E5' }}>Add to bag</Button>{' '}
+                                        <Button onClick={() => addToCart(`${item.id}`)} variant="primary" className="w-75" style={{ background: '#4F46E5' }}>Add to bag</Button>
                                     </Stack>
                                 </Stack>
                             </Col>
