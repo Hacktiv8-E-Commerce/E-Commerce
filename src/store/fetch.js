@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const fetchProduct = () => {
+export const fetchProduct = (fetchCart) => {
     return async (dispatch) => {
         const res = await axios.get('https://fakestoreapi.com/products')
         const data = await res.data
@@ -8,5 +8,6 @@ export const fetchProduct = () => {
             type: "SET_PRODUCT",
             payload: data
         })
+        fetchCart(data)
     }
 }

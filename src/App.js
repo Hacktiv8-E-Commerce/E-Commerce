@@ -8,11 +8,20 @@ import {
   Route
 } from "react-router-dom";
 import { useEffect } from "react";
+import { useDispatch } from 'react-redux'
 
 function App() {
+  const dispatch = useDispatch()
+
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify([]));
-  })
+    if (JSON.parse(!localStorage.getItem('cart'))) {
+      localStorage.setItem('cart', JSON.stringify([]))
+    }
+    dispatch({
+      type: "SET_LOGIN",
+      payload: JSON.parse(localStorage.getItem('login'))
+    })
+  }, [])
   return (
     <Router>
       <Switch>

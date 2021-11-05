@@ -12,21 +12,27 @@ import {
 } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
-import Avatar from 'react-avatar';
 import { Link } from "react-router-dom";
-
-function Profile() {
-    return (
-        <Button variant="outline-light" className="shadow-none" style={{ color: 'black', border: 'none' }}>
-            <Stack direction="horizontal" gap={3}>
-                <Avatar src="/assets/vkontakte.jpg" size="40" round={true} className="my-auto" />
-                <p className="my-auto">Fadila</p>
-            </Stack>
-        </Button>
-    )
-}
+import Btnlogintrue from '../components/btnlogintrue'
+import Btnloginfalse from '../components/btnloginfalse'
+import { useSelector, useDispatch } from 'react-redux'
 
 function Header() {
+    const state = useSelector((state) => state)
+    const dispatch = useDispatch()
+
+    const logout = () => {
+        localStorage.setItem('login', JSON.stringify(false));
+        dispatch({
+            type: "SET_LOGIN",
+            payload: false
+        })
+        dispatch({
+            type: "SET_CART",
+            payload: []
+        })
+    }
+
     return (
         <Navbar className="shadow-sm p-3 mb-5" style={{ minWidth: '768px' }}>
             <Container fluid>
@@ -68,21 +74,26 @@ function Header() {
                             </Button>
                         </InputGroup.Text>
                     </InputGroup>
-                    <Stack direction="horizontal" gap={1}>
+                    <Stack direction="horizontal" gap={3}>
                         <Link to={'/cart'}>
                             <Button variant="outline-light" className="shadow-none my-auto" style={{ color: 'black', border: 'none' }} >
                                 <FontAwesomeIcon icon={faShoppingCart} size="lg" />
                             </Button>
                         </Link>
                         <Nav>
-                            <NavDropdown title={<Profile />} id="nav-dropdown-profile" align="end">
-                                <NavDropdown.Item eventKey="4.1">Logout</NavDropdown.Item>
-                            </NavDropdown>
+                            {
+                                state.login ?
+                                    <NavDropdown title={<Btnlogintrue />} id="nav-dropdown-profile" align="end">
+                                        <NavDropdown.Item onClick={() => logout()}>Logout</NavDropdown.Item>
+                                    </NavDropdown>
+                                    :
+                                    <Btnloginfalse text="Login" />
+                            }
                         </Nav>
                     </Stack>
                 </Stack>
             </Container>
-        </Navbar>
+        </Navbar >
     )
 }
 

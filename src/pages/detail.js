@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams, } from "react-router-dom";
 import { fetchdetail } from '../store/fetchdetail'
 import { setcart } from '../store/setcart'
+import Btnloginfalse from '../components/btnloginfalse'
 
 function Detail() {
     const state = useSelector((state) => state)
@@ -14,9 +15,7 @@ function Detail() {
     let { productId } = useParams();
 
     useEffect(() => {
-        // let filter = state.product.filter(item => item.id == productId)
         dispatch(fetchdetail(productId))
-        // dispatch(setDetail(filter))
     }, [])
 
     function rating(solid, regular) {
@@ -69,7 +68,12 @@ function Detail() {
                                                 </Stack>
                                             </Stack>
                                         </Stack>
-                                        <Button onClick={() => addToCart(`${item.id}`)} variant="primary" className="w-75" style={{ background: '#4F46E5' }}>Add to bag</Button>
+                                        {
+                                            state.login ?
+                                                <Button onClick={() => addToCart(`${item.id}`)} style={{ background: '#4F46E5' }}>Add to bag</Button>
+                                                :
+                                                <Btnloginfalse text="Add to bag" />
+                                        }
                                     </Stack>
                                 </Stack>
                             </Col>

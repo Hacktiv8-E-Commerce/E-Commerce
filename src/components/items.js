@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Container, Image, Stack, Row, Col } from "react-bootstrap";
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchProduct } from '../store/fetch'
+import { fetchcart } from '../store/fetchcart'
 import { Link } from "react-router-dom";
 
 function Items() {
@@ -9,8 +10,12 @@ function Items() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(fetchProduct())
+        dispatch(fetchProduct(fetchCart))
     }, [])
+
+    const fetchCart = (data) => {
+        dispatch(fetchcart(data))
+    }
 
     return (
         <Container style={{ minWidth: '768px' }} className="p-4 pt-0">
