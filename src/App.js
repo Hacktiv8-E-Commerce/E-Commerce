@@ -1,14 +1,8 @@
 import "./App.css";
-import Dashboard from './pages/dashboard'
-import Detail from './pages/detail'
-import Cart from './pages/cart'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from 'react-redux'
+import { Detail, Dashboard, Cart } from "./pages/index";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   const dispatch = useDispatch()
@@ -35,7 +29,7 @@ function App() {
           <Detail />
         </Route>
       </Switch>
-    </Router >
+    </Router>
   );
 }
 

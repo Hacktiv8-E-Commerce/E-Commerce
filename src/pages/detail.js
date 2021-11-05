@@ -1,17 +1,14 @@
 import React, { useEffect } from "react";
 import { Image, Row, Col, Container, Stack, Button } from "react-bootstrap";
-import Header from "../components/header";
-import Regulerstar from '../components/regulerstar'
-import Solidstar from '../components/solidstar'
-import { useSelector, useDispatch } from 'react-redux'
-import { useParams, } from "react-router-dom";
-import { fetchdetail } from '../store/fetchdetail'
-import { setcart } from '../store/setcart'
-import Btnloginfalse from '../components/btnloginfalse'
+import { Header, Regulerstar, Solidstar, Btnloginfalse } from "../components/index";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { fetchdetail } from "../store/fetchdetail";
+import { setcart } from "../store/setcart";
 
 function Detail() {
-    const state = useSelector((state) => state)
-    const dispatch = useDispatch()
+    const state = useSelector((state) => state);
+    const dispatch = useDispatch();
     let { productId } = useParams();
 
     useEffect(() => {
@@ -19,15 +16,20 @@ function Detail() {
     }, [])
 
     function rating(solid, regular) {
-        return <>{Array.from(Array(solid), (e, i) => {
-            return <Solidstar key={i} />
-        })}{Array.from(Array(regular), (e, i) => {
-            return <Regulerstar key={i} />
-        })}</>
+        return (
+            <>
+                {Array.from(Array(solid), (e, i) => {
+                    return <Solidstar key={i} />;
+                })}
+                {Array.from(Array(regular), (e, i) => {
+                    return <Regulerstar key={i} />;
+                })}
+            </>
+        );
     }
 
     function addToCart(item) {
-        setcart(item)
+        setcart(item);
     }
 
     return (
@@ -85,4 +87,4 @@ function Detail() {
     )
 }
 
-export default Detail
+export default Detail;
