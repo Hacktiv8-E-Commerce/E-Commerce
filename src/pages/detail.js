@@ -77,7 +77,7 @@ function Detail() {
                                                 </Stack>
                                             </Stack>
                                             {
-                                                state.login ?
+                                                state.login.login ?
                                                     <Button onClick={() => addToCart(`${item.id}`)} style={{ background: '#4F46E5' }}>Add to bag</Button>
                                                     :
                                                     <Btnloginfalse text="Add to bag" />
