@@ -2,19 +2,16 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Container, Image, Stack, Row, Col } from "react-bootstrap";
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchProduct } from '../store/fetch'
-import { fetchcart } from '../store/fetchcart'
 
 function Items() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchProduct(fetchCart))
-  }, [])
-
-  const fetchCart = (data) => {
-    dispatch(fetchcart(data))
+  const itemClick = () => {
+    dispatch({
+      type: "SET_LOAD",
+      payload: true
+    })
   }
 
   return (
@@ -25,7 +22,7 @@ function Items() {
           {
             state.product.map((item, index) => (
               <Col xs={4} md={4} lg={3} className="mb-4" key={item.id}>
-                <Link to={`/${item.id}`} className="text-decoration-none">
+                <Link onClick={() => itemClick()} to={`/${item.id}`} className="text-decoration-none">
                   <Stack className="flex-grow-0 flex-shrink-0 shadow rounded p-3" gap={2}>
                     <Image
                       src={item.image}

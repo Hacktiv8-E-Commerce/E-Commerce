@@ -21,14 +21,18 @@ function Header() {
   const dispatch = useDispatch()
 
   const logout = () => {
-    localStorage.setItem('login', JSON.stringify(false));
+    localStorage.removeItem('login');
     dispatch({
       type: "SET_LOGIN",
-      payload: false
+      payload: { username: null, login: false }
     })
     dispatch({
       type: "SET_CART",
       payload: []
+    })
+    dispatch({
+      type: "SET_USER",
+      payload: ['', '']
     })
   }
 
@@ -67,23 +71,21 @@ function Header() {
               </Button>
             </InputGroup.Text>
           </InputGroup>
-          <Stack direction="horizontal" gap={3}>
-            <Link to={'/cart'}>
-              <Button variant="outline-light" className="shadow-none my-auto" style={{ color: 'black', border: 'none' }} >
-                <FontAwesomeIcon icon={faShoppingCart} size="lg" />
-              </Button>
-            </Link>
-            <Nav>
-              {
-                state.login ?
-                  <NavDropdown title={<Btnlogintrue />} id="nav-dropdown-profile" align="end">
-                    <NavDropdown.Item onClick={() => logout()}>Logout</NavDropdown.Item>
-                  </NavDropdown>
-                  :
-                  <Btnloginfalse text="Login" />
-              }
-            </Nav>
-          </Stack>
+          <Link to={'/cart'}>
+            <Button variant="outline-light" className="shadow-none my-auto" style={{ color: 'black', border: 'none' }} >
+              <FontAwesomeIcon icon={faShoppingCart} size="lg" />
+            </Button>
+          </Link>
+          <Nav>
+            {
+              state.login.login ?
+                <NavDropdown title={<Btnlogintrue name={state.login.user} />} id="nav-dropdown-profile" align="end">
+                  <NavDropdown.Item onClick={() => logout()}>Logout</NavDropdown.Item>
+                </NavDropdown>
+                :
+                <Btnloginfalse text="Login" />
+            }
+          </Nav>
         </Stack>
       </Container>
     </Navbar >

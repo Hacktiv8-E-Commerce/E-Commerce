@@ -6,7 +6,10 @@ const initialState = {
     detailproduct: [],
     cart: [],
     total: 0,
-    login: false
+    login: {},
+    infouser: ['', ''],
+    loading: false,
+    stock: []
 }
 
 const action = (state = initialState, action) => {
@@ -17,7 +20,10 @@ const action = (state = initialState, action) => {
                 detailproduct: state.detailproduct,
                 cart: state.cart,
                 total: state.total,
-                login: state.login
+                login: state.login,
+                infouser: state.infouser,
+                loading: state.loading,
+                stock: state.stock
             }
         case "SET_DETAIL":
             return {
@@ -25,7 +31,10 @@ const action = (state = initialState, action) => {
                 detailproduct: action.payload,
                 cart: state.cart,
                 total: state.total,
-                login: state.login
+                login: state.login,
+                infouser: state.infouser,
+                loading: state.loading,
+                stock: state.stock
             }
         case "SET_CART":
             return {
@@ -33,7 +42,10 @@ const action = (state = initialState, action) => {
                 detailproduct: state.detailproduct,
                 cart: action.payload,
                 total: state.total,
-                login: state.login
+                login: state.login,
+                infouser: state.infouser,
+                loading: state.loading,
+                stock: state.stock
             }
         case "SET_TOTAL":
             return {
@@ -41,7 +53,10 @@ const action = (state = initialState, action) => {
                 detailproduct: state.detailproduct,
                 cart: state.cart,
                 total: action.payload,
-                login: state.login
+                login: state.login,
+                infouser: state.infouser,
+                loading: state.loading,
+                stock: state.stock
             }
         case "SET_LOGIN":
             return {
@@ -49,8 +64,45 @@ const action = (state = initialState, action) => {
                 detailproduct: state.detailproduct,
                 cart: state.cart,
                 total: state.total,
-                login: action.payload
+                login: action.payload,
+                infouser: state.infouser,
+                loading: state.loading,
+                stock: state.stock
             }
+        case "SET_USER":
+            return {
+                product: state.product,
+                detailproduct: state.detailproduct,
+                cart: state.cart,
+                total: state.total,
+                login: state.login,
+                infouser: action.payload,
+                loading: state.loading,
+                stock: state.stock
+            }
+        case "SET_LOAD":
+            return {
+                product: state.product,
+                detailproduct: state.detailproduct,
+                cart: state.cart,
+                total: state.total,
+                login: state.login,
+                infouser: state.infouser,
+                loading: action.payload,
+                stock: state.stock
+            }
+        case "SET_STOCK":
+            return {
+                product: state.product,
+                detailproduct: state.detailproduct,
+                cart: state.cart,
+                total: state.total,
+                login: state.login,
+                infouser: state.infouser,
+                loading: state.loading,
+                stock: action.payload
+            }
+
         default:
             return state
     }

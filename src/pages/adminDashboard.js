@@ -1,43 +1,69 @@
-import React from "react";
-import { Table, Image, Form, Button } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Table } from "react-bootstrap";
+import { useSelector, useDispatch } from 'react-redux'
+import { Stack, InputGroup, FormControl } from "react-bootstrap";
+import { updatestock } from "../store/updatestock";
+import { fetchProduct } from '../store/fetch'
 
 const AdminDashboard = () => {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchProduct(fetchCart))
+  }, [])
+
+  const updateStock = (type, item) => {
+    dispatch(updatestock(type, state.stock, item, filter, 0))
+  }
+
+  const filter = (productId) => {
+    let product = state.stock.findIndex(item => item.id == productId)
+    return product
+  }
+
+  const fetchCart = (data) => {
+    dispatch({
+      type: "SET_LOAD",
+      payload: false
+    })
+  }
+
   return (
     <div class="d-flex justify-content-center p-5">
-      <Table striped bordered hover variant="dark">
+      <Table striped bordered hover>
         <thead>
           <tr>
-            <th>Product</th>
-            <th>Product Name</th>
-            <th>Stock</th>
-            <th>Action</th>
+            <th>Image</th>
+            <th>First Name</th>
+            <th>Last Name</th>
           </tr>
         </thead>
         <tbody>
-          <tr className="mb-3">
-            <td>
-              <Image src="holder.js/171x180" rounded />
-            </td>
-            <td>
-              <Form.Group
-                className="mx-auto"
-                controlId="exampleForm.ControlTextarea1"
-              >
-                <Form.Control as="textarea" rows={2} />
-              </Form.Group>
-            </td>
-            <td>
-              <Form.Group
-                className="col-md-2 mx-auto"
-                controlId="exampleForm.ControlTextarea1"
-              >
-                <Form.Control as="textarea" rows={2} />
-              </Form.Group>
-            </td>
-            <td>
-              <Button type="update">Update</Button>
-            </td>
-          </tr>
+          {
+            state.stock.map(item => (
+              <tr>
+                <td className="col-lg-1">
+                  <img src={`${item.image}`} alt="" width="100" />
+                </td>
+                <td className="col-lg-9">
+                  <Stack>
+                    <p>{item.title}</p>
+                    <p>{item.description}</p>
+                  </Stack>
+                </td>
+                <td className="col-lg-2">
+                  <Stack className='flex-grow-0 align-items-center' direction="horizontal">
+                    <InputGroup className="w-50" size="sm">
+                      <InputGroup.Text role="button" onClick={() => updateStock('decrement', item)}>-</InputGroup.Text>
+                      <FormControl aria-label="Amount (to the nearest dollar)" value={item.stock} readOnly className="text-center bg-light shadow-none border-0" />
+                      <InputGroup.Text role="button" onClick={() => updateStock('increment', item)}>+</InputGroup.Text>
+                    </InputGroup>
+                  </Stack>
+                </td>
+              </tr>
+            ))
+          }
         </tbody>
       </Table>
     </div>

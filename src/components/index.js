@@ -11,3 +11,4 @@ export { default as HeaderAdmin } from "./headerAdmin";
 export { default as Itemcart } from "./itemcart";
 export { default as Btnlogintrue } from "./btnlogintrue";
 export { default as Btnloginfalse } from "./btnloginfalse";
+export { default as Login } from "./login";

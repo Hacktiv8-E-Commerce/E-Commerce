@@ -1,6 +1,6 @@
 export const updatecart = (type, productId, refresh) => {
-    let othercart = JSON.parse(localStorage.getItem('cart')).filter(product => product.userId !== 4)
-    let mycart = JSON.parse(localStorage.getItem('cart')).filter(product => product.userId === 4)
+    let othercart = JSON.parse(localStorage.getItem('cart')).filter(product => product.userId !== JSON.parse(localStorage.getItem('login')).id)
+    let mycart = JSON.parse(localStorage.getItem('cart')).filter(product => product.userId === JSON.parse(localStorage.getItem('login')).id)
     let indexproduct = mycart[0].products.findIndex(product => product.productId === productId)
     let myproduct = mycart[0].products.filter(product => product.productId === productId)
     let filter = mycart[0].products.filter(product => product.productId !== productId)
@@ -17,7 +17,7 @@ export const updatecart = (type, productId, refresh) => {
         filter.splice(indexproduct, 0)
     }
 
-    othercart.push({ userId: 4, products: filter })
+    othercart.push({ userId: JSON.parse(localStorage.getItem('login')).id, products: filter })
     localStorage.setItem('cart', JSON.stringify(othercart));
     refresh()
 }
