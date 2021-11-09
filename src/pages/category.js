@@ -10,7 +10,7 @@ function useQuery() {
     return React.useMemo(() => new URLSearchParams(search), [search]);
 }
 
-function Search() {
+function Category() {
     const state = useSelector((state) => state);
     const dispatch = useDispatch();
     let query = useQuery();
@@ -24,7 +24,7 @@ function Search() {
     }, [query.get("name")])
 
     const filterProduct = (data) => {
-        let filter = data.filter(x => x.title.toLowerCase().includes(`${query.get("name")}`))
+        let filter = data.filter(x => x.category.toLowerCase().includes(`${query.get("name")}`))
         dispatch({
             type: "SET_FILTER",
             payload: filter
@@ -88,4 +88,4 @@ function Search() {
     )
 }
 
-export default Search
+export default Category

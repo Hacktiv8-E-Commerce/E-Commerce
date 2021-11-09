@@ -74,7 +74,7 @@ function Cart() {
 
     Swal.fire({
       icon: 'success',
-      title: 'product checked out successfully',
+      title: 'product checked out',
       showConfirmButton: false,
       timer: 1500
     })
