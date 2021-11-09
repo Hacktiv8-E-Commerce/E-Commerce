@@ -1,40 +1,38 @@
 import React from "react";
+import { HeaderAdmin } from "../components/index";
 import { Table } from "react-bootstrap";
+
+const storageItems = JSON.parse(localStorage.getItem("recap"));
 
 const AdminRecap = () => {
   return (
-    <div class="d-flex justify-content-center p-5">
-      <Table striped bordered hover variant="dark">
-        <thead>
-          <tr>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Sold</th>
-            <th>Income</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>product1</td>
-            <td>$10</td>
-            <td>12</td>
-            <td>$120</td>
-          </tr>
-          <tr>
-            <td>product2</td>
-            <td>$10</td>
-            <td>12</td>
-            <td>$120</td>
-          </tr>
-          <tr>
-            <td>product3</td>
-            <td>$10</td>
-            <td>12</td>
-            <td>$120</td>
-          </tr>
-        </tbody>
-      </Table>
-    </div>
+    <>
+      <HeaderAdmin />
+      <div className="d-flex justify-content-center p-5">
+        <Table striped bordered hover variant="light">
+          <thead className="p-5">
+            <tr>
+              <th>Product</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {storageItems.map((item) => (
+              <tr>
+                <td className="col-lg-5">{item.title}</td>
+                <td className="col-lg-3">{item.category}</td>
+                <td className="col-lg-2">{item.price}</td>
+                <td className="col-lg-1">{item.quantity}</td>
+                <td className="col-lg-2">{item.total}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
+    </>
   );
 };
 export default AdminRecap;
