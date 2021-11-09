@@ -1,7 +1,7 @@
 import "./App.css";
 import { useEffect } from "react";
 import { useDispatch } from 'react-redux'
-import { Detail, Dashboard, Cart, LoginPage, AdminDashboard } from "./pages/index";
+import { Detail, Dashboard, Cart, LoginPage, AdminDashboard, Search } from "./pages/index";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -35,6 +35,9 @@ function App() {
         </Route>
         <Route path="/cart">
           <Cart />
+        </Route>
+        <Route path="/search">
+          <Search />
         </Route>
         <Route path="/admin">
           <AdminDashboard />

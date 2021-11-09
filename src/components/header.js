@@ -15,10 +15,12 @@ import { faAmazon } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
 import { Btnlogintrue, Btnloginfalse } from './index'
 import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from "react-router-dom";
 
 function Header() {
   const state = useSelector((state) => state)
   const dispatch = useDispatch()
+  let history = useHistory()
 
   const logout = () => {
     localStorage.removeItem('login');
@@ -34,6 +36,14 @@ function Header() {
       type: "SET_USER",
       payload: ['', '']
     })
+  }
+
+  const search = (e, type) => {
+    if (e.key === 'Enter' || type === 'button') {
+      if (state.search.trim()) {
+        history.push(`/search?name=${state.search}`)
+      }
+    }
   }
 
   return (
@@ -64,15 +74,18 @@ function Header() {
               aria-label="Recipient's username"
               aria-describedby="basic-addon2"
               className="shadow-none"
+              value={state.search}
+              onChange={e => dispatch({ type: "SET_SEARCH", payload: e.target.value })}
+              onKeyDown={e => search(e, 'input')}
             />
             <InputGroup.Text className="p-0">
-              <Button variant="light" className="shadow-none">
+              <Button variant="light" className="shadow-none" onClick={e => search(e, 'button')}>
                 <FontAwesomeIcon icon={faSearch} style={{ color: '#9FA6B0' }} />
               </Button>
             </InputGroup.Text>
           </InputGroup>
           <Link to={'/cart'}>
-            <Button variant="outline-light" className="shadow-none my-auto" style={{ color: 'black', border: 'none' }} >
+            <Button variant="outline-light" className="shadow-none my-auto" style={{ color: 'black', border: 'none' }}>
               <FontAwesomeIcon icon={faShoppingCart} size="lg" />
             </Button>
           </Link>

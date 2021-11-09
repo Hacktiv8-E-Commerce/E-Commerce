@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import { Col, Container, Row, Stack, Button } from "react-bootstrap";
 import { Header, Itemcart } from "../components/index";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchcart } from "../store/fetchcart";
 import { fetchProduct } from "../store/fetch";
 import { updatestock } from "../store/updatestock"
+import Swal from 'sweetalert2'
 
 function Cart() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
+  let history = useHistory()
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem('login'))) {
@@ -70,10 +72,20 @@ function Cart() {
     localStorage.setItem('cart', JSON.stringify(othercart));
     localStorage.setItem('recap', JSON.stringify(item));
 
-    dispatch({
-      type: "SET_CART",
-      payload: []
+    Swal.fire({
+      icon: 'success',
+      title: 'product checked out successfully',
+      showConfirmButton: false,
+      timer: 1500
     })
+
+    setTimeout(() => {
+      dispatch({
+        type: "SET_CART",
+        payload: []
+      })
+      history.push(`/`)
+    }, 1700)
   }
 
   return (
@@ -116,7 +128,10 @@ function Cart() {
               </Container>
             ) :
               (
-                <Stack className="justify-content-center" direction="horizontal">Keranjang Anda Kosong</Stack>
+                <Stack className="justify-content-center align-items-center" gap={3}>
+                  <img src="assets/empty-cart.svg" alt="" width="80" />
+                  <p style={{ color: '#7B7B7B' }}>Keranjang Anda Kosong</p>
+                </Stack>
               )
           ) :
             (

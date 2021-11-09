@@ -9,7 +9,8 @@ const initialState = {
     login: {},
     infouser: ['', ''],
     loading: false,
-    stock: []
+    stock: [],
+    search: ''
 }
 
 const action = (state = initialState, action) => {
@@ -23,7 +24,8 @@ const action = (state = initialState, action) => {
                 login: state.login,
                 infouser: state.infouser,
                 loading: state.loading,
-                stock: state.stock
+                stock: state.stock,
+                search: state.search
             }
         case "SET_DETAIL":
             return {
@@ -34,7 +36,8 @@ const action = (state = initialState, action) => {
                 login: state.login,
                 infouser: state.infouser,
                 loading: state.loading,
-                stock: state.stock
+                stock: state.stock,
+                search: state.search
             }
         case "SET_CART":
             return {
@@ -45,7 +48,8 @@ const action = (state = initialState, action) => {
                 login: state.login,
                 infouser: state.infouser,
                 loading: state.loading,
-                stock: state.stock
+                stock: state.stock,
+                search: state.search
             }
         case "SET_TOTAL":
             return {
@@ -56,7 +60,8 @@ const action = (state = initialState, action) => {
                 login: state.login,
                 infouser: state.infouser,
                 loading: state.loading,
-                stock: state.stock
+                stock: state.stock,
+                search: state.search
             }
         case "SET_LOGIN":
             return {
@@ -67,7 +72,8 @@ const action = (state = initialState, action) => {
                 login: action.payload,
                 infouser: state.infouser,
                 loading: state.loading,
-                stock: state.stock
+                stock: state.stock,
+                search: state.search
             }
         case "SET_USER":
             return {
@@ -78,7 +84,8 @@ const action = (state = initialState, action) => {
                 login: state.login,
                 infouser: action.payload,
                 loading: state.loading,
-                stock: state.stock
+                stock: state.stock,
+                search: state.search
             }
         case "SET_LOAD":
             return {
@@ -89,7 +96,8 @@ const action = (state = initialState, action) => {
                 login: state.login,
                 infouser: state.infouser,
                 loading: action.payload,
-                stock: state.stock
+                stock: state.stock,
+                search: state.search
             }
         case "SET_STOCK":
             return {
@@ -100,7 +108,20 @@ const action = (state = initialState, action) => {
                 login: state.login,
                 infouser: state.infouser,
                 loading: state.loading,
-                stock: action.payload
+                stock: action.payload,
+                search: state.search
+            }
+        case "SET_SEARCH":
+            return {
+                product: state.product,
+                detailproduct: state.detailproduct,
+                cart: state.cart,
+                total: state.total,
+                login: state.login,
+                infouser: state.infouser,
+                loading: state.loading,
+                stock: state.stock,
+                search: action.payload
             }
 
         default:
