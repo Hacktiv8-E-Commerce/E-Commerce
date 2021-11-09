@@ -34,7 +34,7 @@ const AdminDashboard = () => {
       <HeaderAdmin />
       <div className="d-flex justify-content-center p-5">
         <Table striped bordered hover>
-          <thead>
+          <thead className="text-center">
             <tr>
               <th>Image</th>
               <th>Product Name</th>
@@ -49,7 +49,7 @@ const AdminDashboard = () => {
                 </td>
                 <td className="col-lg-9">
                   <Stack>
-                    <p>{item.title}</p>
+                    <p className="fw-bold">{item.title}</p>
                     <p>{item.description}</p>
                   </Stack>
                 </td>
