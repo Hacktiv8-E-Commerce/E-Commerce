@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Navbar,
   Container,
@@ -16,11 +16,23 @@ import { Link } from "react-router-dom";
 import { Btnlogintrue, Btnloginfalse } from './index'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from "react-router-dom";
+import { fetchCategory } from "../store/fetchcategory"
 
 function Header() {
   const state = useSelector((state) => state)
   const dispatch = useDispatch()
   let history = useHistory()
+
+  useEffect(() => {
+    if (!localStorage.getItem('category-list')) {
+      dispatch(fetchCategory())
+    } else {
+      dispatch({
+        type: "SET_CATEGORY",
+        payload: JSON.parse(localStorage.getItem('category-list'))
+      })
+    }
+  }, [])
 
   const logout = () => {
     localStorage.removeItem('login');
@@ -43,6 +55,10 @@ function Header() {
       if (state.search.trim()) {
         history.push(`/search?name=${state.search}`)
       }
+      dispatch({
+        type: "SET_SEARCH",
+        payload: ''
+      })
     }
   }
 
@@ -62,15 +78,16 @@ function Header() {
             navbarScroll
           >
             <NavDropdown title="kategori" id="navbarScrollingDropdown-kategori">
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">Something else here</NavDropdown.Item>
+              {
+                state.category.map((category, index) => (
+                  <NavDropdown.Item key={index}><Link to={`/category?name=${category}`} className="text-decoration-none" style={{ color: 'black' }}>{category}</Link></NavDropdown.Item>
+                ))
+              }
             </NavDropdown>
           </Nav>
           <InputGroup size="sm" className="w-75 me-auto" style={{ minWidth: '200px' }}>
             <FormControl
-              placeholder="Cari barang elektronik"
+              placeholder="Cari barangmu..."
               aria-label="Recipient's username"
               aria-describedby="basic-addon2"
               className="shadow-none"
