@@ -20,11 +20,17 @@ function Search() {
             type: "SET_LOAD",
             payload: true
         })
-        dispatch(fetchProduct(() => dispatch({
+        dispatch(fetchProduct(filterProduct))
+    }, [])
+
+    const filterProduct = (data) => {
+        // let filter = data.filter(x => x.title.include(query.get("name")))
+        // console.log(filter)
+        dispatch({
             type: "SET_LOAD",
             payload: false
-        })))
-    }, [])
+        })
+    }
 
     const itemClick = () => {
         dispatch({
