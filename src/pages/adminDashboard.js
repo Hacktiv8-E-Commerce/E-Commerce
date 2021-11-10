@@ -10,6 +10,10 @@ const AdminDashboard = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch({
+      type: "SET_LOAD",
+      payload: true
+    })
     dispatch(fetchProduct(fetchCart));
   }, []);
 
@@ -32,59 +36,64 @@ const AdminDashboard = () => {
   return (
     <>
       <HeaderAdmin />
-      <div className="d-flex justify-content-center p-5">
-        <Table striped bordered hover>
-          <thead className="text-center">
-            <tr>
-              <th>Image</th>
-              <th>Product Name</th>
-              <th>Stocks</th>
-            </tr>
-          </thead>
-          <tbody>
-            {state.stock.map((item) => (
-              <tr>
-                <td className="col-lg-1">
-                  <img src={`${item.image}`} alt="" width="100" />
-                </td>
-                <td className="col-lg-9">
-                  <Stack>
-                    <p className="fw-bold">{item.title}</p>
-                    <p>{item.description}</p>
-                  </Stack>
-                </td>
-                <td className="col-lg-2">
-                  <Stack
-                    className="flex-grow-0 align-items-center"
-                    direction="horizontal"
-                  >
-                    <InputGroup className="w-50" size="sm">
-                      <InputGroup.Text
-                        role="button"
-                        onClick={() => updateStock("decrement", item)}
+      {
+        !state.loading ? (
+          <div className="d-flex justify-content-center p-5">
+            <Table striped bordered hover>
+              <thead className="text-center">
+                <tr>
+                  <th>Image</th>
+                  <th>Product Name</th>
+                  <th>Stocks</th>
+                </tr>
+              </thead>
+              <tbody>
+                {state.stock.map((item) => (
+                  <tr>
+                    <td className="col-lg-1">
+                      <img src={`${item.image}`} alt="" width="100" />
+                    </td>
+                    <td className="col-lg-9">
+                      <Stack>
+                        <p className="fw-bold">{item.title}</p>
+                        <p>{item.description}</p>
+                      </Stack>
+                    </td>
+                    <td className="col-lg-2">
+                      <Stack
+                        className="flex-grow-0 align-items-center"
+                        direction="horizontal"
                       >
-                        -
-                      </InputGroup.Text>
-                      <FormControl
-                        aria-label="Amount (to the nearest dollar)"
-                        value={item.stock}
-                        readOnly
-                        className="text-center bg-light shadow-none border-0"
-                      />
-                      <InputGroup.Text
-                        role="button"
-                        onClick={() => updateStock("increment", item)}
-                      >
-                        +
-                      </InputGroup.Text>
-                    </InputGroup>
-                  </Stack>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </div>
+                        <InputGroup className="w-50" size="sm">
+                          <InputGroup.Text
+                            role="button"
+                            onClick={() => updateStock("decrement", item)}
+                          >
+                            -
+                          </InputGroup.Text>
+                          <FormControl
+                            aria-label="Amount (to the nearest dollar)"
+                            value={item.stock}
+                            readOnly
+                            className="text-center bg-light shadow-none border-0"
+                          />
+                          <InputGroup.Text
+                            role="button"
+                            onClick={() => updateStock("increment", item)}
+                          >
+                            +
+                          </InputGroup.Text>
+                        </InputGroup>
+                      </Stack>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </div>
+        ) :
+          ''
+      }
     </>
   );
 };
