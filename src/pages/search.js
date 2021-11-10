@@ -14,6 +14,7 @@ function Search() {
     const state = useSelector((state) => state);
     const dispatch = useDispatch();
     let query = useQuery();
+    let name = query.get("name")
 
     useEffect(() => {
         dispatch({
@@ -21,10 +22,10 @@ function Search() {
             payload: true
         })
         dispatch(fetchProduct(filterProduct))
-    }, [query.get("name")])
+    }, [name])
 
     const filterProduct = (data) => {
-        let filter = data.filter(x => x.title.toLowerCase().includes(`${query.get("name")}`))
+        let filter = data.filter(x => x.title.toLowerCase().includes(`${name}`))
         dispatch({
             type: "SET_FILTER",
             payload: filter
