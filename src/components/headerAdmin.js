@@ -1,8 +1,8 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAmazon } from "@fortawesome/free-brands-svg-icons";
-import { Navbar, Container, Nav, NavDropdown, Stack } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Navbar, Container, Nav, Stack, Button } from "react-bootstrap";
+import { Link, NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 function HeaderAdmin() {
@@ -17,28 +17,31 @@ function HeaderAdmin() {
   };
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Container>
-        <Stack direction="horizontal" className="w-100" gap={5}>
+    <Navbar bg="dark" variant="dark" style={{ minWidth: "768px" }}>
+      <Container fluid>
+        <Stack direction="horizontal" className="w-100 px-5" gap={5}>
           <Link to={`/admin`} className="text-decoration-none">
-            <Navbar.Brand href="#home" className="m-0">
+            <Navbar.Brand className="m-0">
               <FontAwesomeIcon icon={faAmazon} />
               lazone
             </Navbar.Brand>
           </Link>
-          <Nav variant="pills" defaultActiveKey="#home">
-            <Link to={`/admin-rekap`} className="text-decoration-none">
-              <Nav.Link href="#recap">Sales Recap</Nav.Link>
-            </Link>
+          <Nav>
+            <NavLink
+              to={`/admin-rekap`}
+              href="#recap"
+              className="text-decoration-none"
+              style={(isActive) => ({
+                color: isActive ? "white" : "silver",
+              })}
+            >
+              Sales Recap
+            </NavLink>
           </Nav>
-          <Nav className="justify-content-end flex-grow-1 pe-3">
-            <NavDropdown title="Admin" id="nav-dropdown-profile">
-              <Link to={`/`} className="text-decoration-none">
-                <NavDropdown.Item onClick={() => logout()}>
-                  Logout
-                </NavDropdown.Item>
-              </Link>
-            </NavDropdown>
+          <Nav className="justify-content-end ms-auto">
+            <Button variant="light" onClick={() => logout()}>
+              Log Out
+            </Button>
           </Nav>
         </Stack>
       </Container>

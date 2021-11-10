@@ -4,7 +4,7 @@ export const updatestock = (type, product, item, getIndex, quantity) => {
         let stock = product
         if (type === "increment") {
             stock.splice(index, 1, { id: item.id, title: item.title, price: item.price, category: item.category, description: item.description, image: item.image, stock: item.stock + 1 })
-        } else if (type == "decrement") {
+        } else if (type === "decrement") {
             if (item.stock >= 1) {
                 stock.splice(index, 1, { id: item.id, title: item.title, price: item.price, category: item.category, description: item.description, image: item.image, stock: item.stock - 1 })
             }

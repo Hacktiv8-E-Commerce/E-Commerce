@@ -7,7 +7,7 @@ export default function ModalLogin() {
       className="modal fade"
       id="staticBackdrop"
       data-bs-keyboard="false"
-      tabindex="-1"
+      tabIndex="-1"
       aria-labelledby="staticBackdropLabel"
       aria-hidden="true"
     >

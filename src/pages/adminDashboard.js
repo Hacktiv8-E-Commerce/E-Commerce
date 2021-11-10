@@ -31,7 +31,7 @@ const AdminDashboard = () => {
   };
 
   const filter = (productId) => {
-    let product = state.stock.findIndex((item) => item.id == productId);
+    let product = state.stock.findIndex((item) => item.id === productId);
     return product;
   };
 
@@ -46,12 +46,11 @@ const AdminDashboard = () => {
     <>
       <HeaderAdmin />
       {!state.loading ? (
-        <div className="d-flex flex-column justify-content-center p-5">
-          <h1>
-            Product Stock{" "}
-            <small style={{ fontSize: "1.5rem" }}>dashboard</small>
-          </h1>
-          <Table striped bordered hover>
+        <div
+          className="d-flex justify-content-center p-5"
+          style={{ minWidth: "768px" }}
+        >
+          <Table bordered>
             <thead className="text-center">
               <tr>
                 <th>Image</th>
@@ -61,7 +60,7 @@ const AdminDashboard = () => {
             </thead>
             <tbody>
               {state.stock.map((item) => (
-                <tr>
+                <tr key={item.id}>
                   <td className="col-lg-1">
                     <img
                       src={`${item.image}`}
@@ -89,12 +88,12 @@ const AdminDashboard = () => {
                     }}
                   >
                     <Stack>
-                      <InputGroup>
+                      <InputGroup style={{ minWidth: "130px" }}>
                         <InputGroup.Text
                           role="button"
                           onClick={() => updateStock("decrement", item)}
                           style={{
-                            backgroundColor: "red",
+                            backgroundColor: "#424242",
                             color: "white",
                           }}
                         >
@@ -111,7 +110,7 @@ const AdminDashboard = () => {
                           role="button"
                           onClick={() => updateStock("increment", item)}
                           style={{
-                            backgroundColor: "blue",
+                            backgroundColor: "#424242",
                             color: "white",
                           }}
                         >
@@ -135,41 +134,3 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
-
-{
-  /* <Container>
-<Row>
-  <Stack
-    className=" align-items-center"
-    direction="horizontal"
-  >
-    <InputGroup>
-      <Col>
-        <InputGroup.Text
-          role="button"
-          onClick={() => updateStock("decrement", item)}
-        >
-          -
-        </InputGroup.Text>
-      </Col>
-      <Col xs={6}>
-        <FormControl
-          aria-label="Amount (to the nearest dollar)"
-          value={item.stock}
-          readOnly
-          className="text-center bg-light shadow-none border-0"
-        />
-      </Col>
-      <Col>
-        <InputGroup.Text
-          role="button"
-          onClick={() => updateStock("increment", item)}
-        >
-          +
-        </InputGroup.Text>
-      </Col>
-    </InputGroup>
-  </Stack>
-</Row>
-</Container> */
-}

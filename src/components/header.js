@@ -97,7 +97,7 @@ function Header() {
             style={{ minWidth: "200px" }}
           >
             <FormControl
-              placeholder="Cari barangmu..."
+              placeholder="Search in alazone..."
               aria-label="Recipient's username"
               aria-describedby="basic-addon2"
               className="shadow-none"
