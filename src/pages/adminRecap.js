@@ -27,7 +27,7 @@ const AdminRecap = () => {
       <HeaderAdmin />
       <div className="d-flex flex-column justify-content-center p-5">
         <h1>
-          Product Stock <small style={{ fontSize: "1.5rem" }}>dashboard</small>
+          Sales <small style={{ fontSize: "1.5rem" }}>Recap</small>
         </h1>
         <Table striped bordered hover variant="light" className="text-center">
           <thead>
