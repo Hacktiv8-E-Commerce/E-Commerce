@@ -12,8 +12,8 @@ function HeaderAdmin() {
     localStorage.removeItem("login-admin");
     dispatch({
       type: "SET_LOGIN_ADMIN",
-      payload: false
-    })
+      payload: false,
+    });
   };
 
   return (
@@ -26,23 +26,18 @@ function HeaderAdmin() {
               lazone
             </Navbar.Brand>
           </Link>
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav>
-              <Link to={`/admin`} className="text-decoration-none">
-                <Nav.Link href="#products">Update Stock</Nav.Link>
-              </Link>
-              <Link to={`/adminRecap`} className="text-decoration-none">
-                <Nav.Link href="#recap">Sales Recap</Nav.Link>
-              </Link>
-            </Nav>
-          </Navbar.Collapse>
           <Nav>
-            <NavDropdown title="Admin" id="nav-dropdown-profile" align="end">
-              <NavDropdown.Item onClick={() => logout()}>
-                <Link to={`/`} className="text-decoration-none">
+            <Link to={`/adminRecap`} className="text-decoration-none">
+              <Nav.Link href="#recap">Sales Recap</Nav.Link>
+            </Link>
+          </Nav>
+          <Nav className="justify-content-end flex-grow-1 pe-3">
+            <NavDropdown title="Admin" id="nav-dropdown-profile">
+              <Link to={`/`} className="text-decoration-none">
+                <NavDropdown.Item onClick={() => logout()}>
                   Logout
-                </Link>
-              </NavDropdown.Item>
+                </NavDropdown.Item>
+              </Link>
             </NavDropdown>
           </Nav>
         </Stack>

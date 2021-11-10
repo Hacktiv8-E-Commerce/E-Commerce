@@ -36,72 +36,130 @@ const AdminDashboard = () => {
     });
   };
 
-  return (
-    JSON.parse(localStorage.getItem("login-admin")) ?
-      <>
-        <HeaderAdmin />
-        {
-          !state.loading ? (
-            <div className="d-flex justify-content-center p-5">
-              <Table striped bordered hover>
-                <thead className="text-center">
-                  <tr>
-                    <th>Image</th>
-                    <th>Product Name</th>
-                    <th>Stocks</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {state.stock.map((item) => (
-                    <tr>
-                      <td className="col-lg-1">
-                        <img src={`${item.image}`} alt="" width="100" />
-                      </td>
-                      <td className="col-lg-9">
-                        <Stack>
-                          <p className="fw-bold">{item.title}</p>
-                          <p>{item.description}</p>
-                        </Stack>
-                      </td>
-                      <td className="col-lg-2">
-                        <Stack
-                          className="flex-grow-0 align-items-center"
-                          direction="horizontal"
+  return JSON.parse(localStorage.getItem("login-admin")) ? (
+    <>
+      <HeaderAdmin />
+      {!state.loading ? (
+        <div className="d-flex justify-content-center p-5">
+          <Table striped bordered hover>
+            <thead className="text-center">
+              <tr>
+                <th>Image</th>
+                <th>Product Name</th>
+                <th>Stocks</th>
+              </tr>
+            </thead>
+            <tbody>
+              {state.stock.map((item) => (
+                <tr>
+                  <td className="col-lg-1">
+                    <img
+                      src={`${item.image}`}
+                      alt=""
+                      width="100"
+                      style={{
+                        objectFit: "contain",
+                        height: "200px",
+                        width: "200px",
+                        objectPosition: "center",
+                        padding: "1rem",
+                      }}
+                    />
+                  </td>
+                  <td className="col-lg-9">
+                    <Stack>
+                      <p className="fw-bold">{item.title}</p>
+                      <p>{item.description}</p>
+                    </Stack>
+                  </td>
+                  <td
+                    className="col-lg-2 "
+                    style={{
+                      padding: "5rem 1rem",
+                    }}
+                  >
+                    <Stack>
+                      <InputGroup>
+                        <InputGroup.Text
+                          role="button"
+                          onClick={() => updateStock("decrement", item)}
+                          style={{
+                            backgroundColor: "red",
+                            color: "white",
+                          }}
                         >
-                          <InputGroup className="w-50" size="sm">
-                            <InputGroup.Text
-                              role="button"
-                              onClick={() => updateStock("decrement", item)}
-                            >
-                              -
-                            </InputGroup.Text>
-                            <FormControl
-                              aria-label="Amount (to the nearest dollar)"
-                              value={item.stock}
-                              readOnly
-                              className="text-center bg-light shadow-none border-0"
-                            />
-                            <InputGroup.Text
-                              role="button"
-                              onClick={() => updateStock("increment", item)}
-                            >
-                              +
-                            </InputGroup.Text>
-                          </InputGroup>
-                        </Stack>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
-            </div>
-          ) :
-            ''
-        }
-      </>
-      :
-      <Redirect to={`/loginadmin`} />
+                          -
+                        </InputGroup.Text>
+                        <FormControl
+                          aria-label="Amount (to the nearest dollar)"
+                          value={item.stock}
+                          readOnly
+                          className="text-center bg-light shadow-none border-0"
+                          style={{ width: "1rem" }}
+                        />
+                        <InputGroup.Text
+                          role="button"
+                          onClick={() => updateStock("increment", item)}
+                          style={{
+                            backgroundColor: "blue",
+                            color: "white",
+                          }}
+                        >
+                          +
+                        </InputGroup.Text>
+                      </InputGroup>
+                    </Stack>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </div>
+      ) : (
+        ""
+      )}
+    </>
+  ) : (
+    <Redirect to={`/loginadmin`} />
   );
 };
 
 export default AdminDashboard;
+
+{
+  /* <Container>
+<Row>
+  <Stack
+    className=" align-items-center"
+    direction="horizontal"
+  >
+    <InputGroup>
+      <Col>
+        <InputGroup.Text
+          role="button"
+          onClick={() => updateStock("decrement", item)}
+        >
+          -
+        </InputGroup.Text>
+      </Col>
+      <Col xs={6}>
+        <FormControl
+          aria-label="Amount (to the nearest dollar)"
+          value={item.stock}
+          readOnly
+          className="text-center bg-light shadow-none border-0"
+        />
+      </Col>
+      <Col>
+        <InputGroup.Text
+          role="button"
+          onClick={() => updateStock("increment", item)}
+        >
+          +
+        </InputGroup.Text>
+      </Col>
+    </InputGroup>
+  </Stack>
+</Row>
+</Container> */
+}
