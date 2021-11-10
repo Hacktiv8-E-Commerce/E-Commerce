@@ -31,7 +31,7 @@ function HeaderAdmin() {
               <Link to={`/admin`} className="text-decoration-none">
                 <Nav.Link href="#products">Update Stock</Nav.Link>
               </Link>
-              <Link to={`/adminRecap`} className="text-decoration-none">
+              <Link to={`/admin-rekap`} className="text-decoration-none">
                 <Nav.Link href="#recap">Sales Recap</Nav.Link>
               </Link>
             </Nav>

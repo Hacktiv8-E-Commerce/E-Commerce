@@ -22,7 +22,7 @@ function Items() {
           {
             state.product.slice(0, 8).map((item) => (
               <Col xs={4} md={4} lg={3} className="mb-4" key={item.id}>
-                <Link onClick={() => itemClick()} to={`/${item.id}`} className="text-decoration-none">
+                <Link onClick={() => itemClick()} to={`/product/${item.id}`} className="text-decoration-none">
                   <Stack className="flex-grow-0 flex-shrink-0 shadow rounded p-3" gap={2}>
                     <Image
                       src={item.image}
