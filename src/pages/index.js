@@ -4,5 +4,6 @@ export { default as AdminDashboard } from "./adminDashboard";
 export { default as AdminRecap } from "./adminRecap";
 export { default as Cart } from "./cart";
 export { default as LoginPage } from "./loginpage";
+export { default as LoginAdminPage } from "./loginadmin";
 export { default as Search } from "./search";
 export { default as Category } from "./category";

@@ -1,38 +1,29 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRouteMatch, useHistory } from "react-router-dom";
-import { logincheck } from "../store/login";
+import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
-export default function Login() {
-  let { path } = useRouteMatch();
+export default function LoginAdmin() {
   let history = useHistory();
 
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const login = (status) => {
-    dispatch(
-      logincheck(
-        state.infouser[0],
-        state.infouser[1],
-        redirect,
-        status,
-        loaderfalse
-      )
-    )
-  };
-
-  const redirect = (status) => {
-    if (status) {
-      history.push("/");
+  const login = () => {
+    if (state.infouser[0] === "admin" && state.infouser[1] === "admin") {
+      localStorage.setItem('login-admin', JSON.stringify(true));
+      dispatch({
+        type: "SET_LOGIN_ADMIN",
+        payload: true
+      })
+      dispatch({
+        type: "SET_USER",
+        payload: ['', '']
+      })
+      history.push("/admin");
+    } else {
+      toast.error("username or password is incorrect");
     }
-  };
-
-  const loaderfalse = () => {
-    dispatch({
-      type: "SET_LOAD",
-      payload: false,
-    });
   };
 
   return (
@@ -57,7 +48,6 @@ export default function Login() {
               type="email"
               id="typeEmailX"
               class="form-control form-control-lg"
-              value={state.infouser[0]}
             />
           </div>
 
@@ -75,7 +65,6 @@ export default function Login() {
               type="password"
               id="typePasswordX"
               class="form-control form-control-lg"
-              value={state.infouser[1]}
             />
           </div>
 
@@ -84,26 +73,13 @@ export default function Login() {
               Forgot password?
             </a>
           </p>
-
-          {path === "/login" ? (
-            <button
-              class="btn btn-outline-light btn-lg px-5"
-              type="submit"
-              onClick={() => login(true)}
-            >
-              Login
-            </button>
-          ) : (
-            <button
-              class="btn btn-outline-light btn-lg px-5"
-              type="submit"
-              data-bs-dismiss="modal"
-              onClick={() => login(false)}
-            >
-              Login
-            </button>
-          )}
-
+          <button
+            class="btn btn-outline-light btn-lg px-5"
+            type="submit"
+            onClick={() => login()}
+          >
+            Login
+          </button>
           <div class="d-flex justify-content-center text-center mt-0 pt-0">
             <a href="#!" class="text-white">
               <i class="fab fa-facebook-f fa-lg"></i>

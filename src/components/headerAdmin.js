@@ -3,22 +3,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAmazon } from "@fortawesome/free-brands-svg-icons";
 import { Navbar, Container, Nav, NavDropdown, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 function HeaderAdmin() {
-  const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const logout = () => {
-    localStorage.removeItem("login");
+    localStorage.removeItem("login-admin");
     dispatch({
-      type: "SET_LOGIN",
-      payload: { username: null, login: false },
-    });
-    dispatch({
-      type: "SET_USER",
-      payload: ["", ""],
-    });
+      type: "SET_LOGIN_ADMIN",
+      payload: false
+    })
   };
 
   return (

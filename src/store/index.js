@@ -12,7 +12,9 @@ const initialState = {
     stock: [],
     search: '',
     filter: [],
-    category: []
+    category: [],
+    recap: [],
+    loginadmin: false
 }
 
 const action = (state = initialState, action) => {
@@ -29,7 +31,9 @@ const action = (state = initialState, action) => {
                 stock: state.stock,
                 search: state.search,
                 filter: state.filter,
-                category: state.category
+                category: state.category,
+                recap: state.recap,
+                loginadmin: state.loginadmin
             }
         case "SET_DETAIL":
             return {
@@ -43,7 +47,9 @@ const action = (state = initialState, action) => {
                 stock: state.stock,
                 search: state.search,
                 filter: state.filter,
-                category: state.category
+                category: state.category,
+                recap: state.recap,
+                loginadmin: state.loginadmin
             }
         case "SET_CART":
             return {
@@ -57,7 +63,9 @@ const action = (state = initialState, action) => {
                 stock: state.stock,
                 search: state.search,
                 filter: state.filter,
-                category: state.category
+                category: state.category,
+                recap: state.recap,
+                loginadmin: state.loginadmin
             }
         case "SET_TOTAL":
             return {
@@ -71,7 +79,9 @@ const action = (state = initialState, action) => {
                 stock: state.stock,
                 search: state.search,
                 filter: state.filter,
-                category: state.category
+                category: state.category,
+                recap: state.recap,
+                loginadmin: state.loginadmin
             }
         case "SET_LOGIN":
             return {
@@ -85,7 +95,9 @@ const action = (state = initialState, action) => {
                 stock: state.stock,
                 search: state.search,
                 filter: state.filter,
-                category: state.category
+                category: state.category,
+                recap: state.recap,
+                loginadmin: state.loginadmin
             }
         case "SET_USER":
             return {
@@ -99,7 +111,9 @@ const action = (state = initialState, action) => {
                 stock: state.stock,
                 search: state.search,
                 filter: state.filter,
-                category: state.category
+                category: state.category,
+                recap: state.recap,
+                loginadmin: state.loginadmin
             }
         case "SET_LOAD":
             return {
@@ -113,7 +127,9 @@ const action = (state = initialState, action) => {
                 stock: state.stock,
                 search: state.search,
                 filter: state.filter,
-                category: state.category
+                category: state.category,
+                recap: state.recap,
+                loginadmin: state.loginadmin
             }
         case "SET_STOCK":
             return {
@@ -127,7 +143,9 @@ const action = (state = initialState, action) => {
                 stock: action.payload,
                 search: state.search,
                 filter: state.filter,
-                category: state.category
+                category: state.category,
+                recap: state.recap,
+                loginadmin: state.loginadmin
             }
         case "SET_SEARCH":
             return {
@@ -141,7 +159,9 @@ const action = (state = initialState, action) => {
                 stock: state.stock,
                 search: action.payload,
                 filter: state.filter,
-                category: state.category
+                category: state.category,
+                recap: state.recap,
+                loginadmin: state.loginadmin
             }
         case "SET_FILTER":
             return {
@@ -155,7 +175,9 @@ const action = (state = initialState, action) => {
                 stock: state.stock,
                 search: state.search,
                 filter: action.payload,
-                category: state.category
+                category: state.category,
+                recap: state.recap,
+                loginadmin: state.loginadmin
             }
         case "SET_CATEGORY":
             return {
@@ -169,7 +191,41 @@ const action = (state = initialState, action) => {
                 stock: state.stock,
                 search: state.search,
                 filter: state.filter,
-                category: action.payload
+                category: action.payload,
+                recap: state.recap,
+                loginadmin: state.loginadmin
+            }
+        case "SET_RECAP":
+            return {
+                product: state.product,
+                detailproduct: state.detailproduct,
+                cart: state.cart,
+                total: state.total,
+                login: state.login,
+                infouser: state.infouser,
+                loading: state.loading,
+                stock: state.stock,
+                search: state.search,
+                filter: state.filter,
+                category: state.category,
+                recap: action.payload,
+                loginadmin: state.loginadmin
+            }
+        case "SET_LOGIN_ADMIN":
+            return {
+                product: state.product,
+                detailproduct: state.detailproduct,
+                cart: state.cart,
+                total: state.total,
+                login: state.login,
+                infouser: state.infouser,
+                loading: state.loading,
+                stock: state.stock,
+                search: state.search,
+                filter: state.filter,
+                category: state.category,
+                recap: state.recap,
+                loginadmin: action.payload
             }
 
         default:
