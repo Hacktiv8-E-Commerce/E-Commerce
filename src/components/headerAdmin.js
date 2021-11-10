@@ -27,7 +27,7 @@ function HeaderAdmin() {
             </Navbar.Brand>
           </Link>
           <Nav>
-            <Link to={`/adminRecap`} className="text-decoration-none">
+            <Link to={`/admin-rekap`} className="text-decoration-none">
               <Nav.Link href="#recap">Sales Recap</Nav.Link>
             </Link>
           </Nav>

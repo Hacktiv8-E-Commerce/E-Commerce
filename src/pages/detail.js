@@ -6,14 +6,16 @@ import { useParams } from "react-router-dom";
 import { fetchdetail } from "../store/fetchdetail";
 import { setcart } from "../store/setcart";
 import { fetchcart } from '../store/fetchcart';
+import { useHistory } from "react-router-dom";
 
 function Detail() {
     const state = useSelector((state) => state);
     const dispatch = useDispatch();
     let { productId } = useParams();
+    let history = useHistory()
 
     useEffect(() => {
-        dispatch(fetchdetail(productId))
+        dispatch(fetchdetail(productId, () => history.push(`/product?id=21`)))
     }, [])
 
     function rating(solid, regular) {
