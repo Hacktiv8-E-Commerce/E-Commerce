@@ -26,7 +26,7 @@ function HeaderAdmin() {
               lazone
             </Navbar.Brand>
           </Link>
-          <Nav>
+          <Nav variant="pills" defaultActiveKey="#home">
             <Link to={`/admin-rekap`} className="text-decoration-none">
               <Nav.Link href="#recap">Sales Recap</Nav.Link>
             </Link>

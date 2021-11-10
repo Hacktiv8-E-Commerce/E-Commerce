@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Table, Stack, InputGroup, FormControl } from "react-bootstrap";
+import {
+  Table,
+  Stack,
+  InputGroup,
+  FormControl,
+  PageHeader,
+} from "react-bootstrap";
 import { updatestock } from "../store/updatestock";
 import { fetchProduct } from "../store/fetch";
 import { HeaderAdmin } from "../components/index";
@@ -40,7 +46,11 @@ const AdminDashboard = () => {
     <>
       <HeaderAdmin />
       {!state.loading ? (
-        <div className="d-flex justify-content-center p-5">
+        <div className="d-flex flex-column justify-content-center p-5">
+          <h1>
+            Product Stock{" "}
+            <small style={{ fontSize: "1.5rem" }}>dashboard</small>
+          </h1>
           <Table striped bordered hover>
             <thead className="text-center">
               <tr>
