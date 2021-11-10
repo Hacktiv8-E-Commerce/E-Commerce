@@ -46,9 +46,13 @@ const AdminDashboard = () => {
       <HeaderAdmin />
       {!state.loading ? (
         <div
-          className="d-flex justify-content-center p-5"
+          className="d-flex flex-column justify-content-center p-5"
           style={{ minWidth: "768px" }}
         >
+          <h1>
+            Product Stock{" "}
+            <small style={{ fontSize: "1.5rem" }}>dashboard</small>
+          </h1>
           <Table bordered>
             <thead className="text-center">
               <tr>
