@@ -19,7 +19,7 @@
   display: none;
 }
 
-#navbarScrollingDropdown-kategori::after {
+#navbarDarkDropdownMenuLink::after {
   display: none;
 }
 

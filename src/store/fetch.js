@@ -14,7 +14,7 @@ export const fetchProduct = (fetchCart) => {
                     if (JSON.parse(!localStorage.getItem('stock'))) {
                         let stock = []
                         for (const { id, title, price, category, description, image } of result.data) {
-                            stock.push({ id: id, title: title, price: price, category: category, description: description, image: image, stock: 0 })
+                            stock.push({ id: id, title: title, price: price, category: category, description: description, image: image, stock: 2 })
                         }
                         dispatch({
                             type: "SET_STOCK",

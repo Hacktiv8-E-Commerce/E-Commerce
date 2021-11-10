@@ -5,7 +5,6 @@ import {
   Stack,
   InputGroup,
   FormControl,
-  PageHeader,
 } from "react-bootstrap";
 import { updatestock } from "../store/updatestock";
 import { fetchProduct } from "../store/fetch";
@@ -61,7 +60,7 @@ const AdminDashboard = () => {
             <tbody>
               {state.stock.map((item) => (
                 <tr key={item.id}>
-                  <td className="col-lg-1">
+                  <td className="col-lg-1 align-middle">
                     <img
                       src={`${item.image}`}
                       alt=""
@@ -75,17 +74,14 @@ const AdminDashboard = () => {
                       }}
                     />
                   </td>
-                  <td className="col-lg-9">
+                  <td className="col-lg-9 align-middle">
                     <Stack>
                       <p className="fw-bold">{item.title}</p>
                       <p>{item.description}</p>
                     </Stack>
                   </td>
                   <td
-                    className="col-lg-2 "
-                    style={{
-                      padding: "5rem 1rem",
-                    }}
+                    className="col-lg-2 align-middle"
                   >
                     <Stack>
                       <InputGroup style={{ minWidth: "130px" }}>

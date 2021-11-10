@@ -72,24 +72,15 @@ function Header() {
               lazone
             </Navbar.Brand>
           </Link>
-          <Nav
-            className="my-2 my-lg-0"
-            style={{ maxHeight: "100px" }}
-            navbarScroll
-          >
-            <NavDropdown title="Category" id="navbarScrollingDropdown-kategori">
-              {state.category.map((category, index) => (
-                <NavDropdown.Item key={index}>
-                  <Link
-                    to={`/category?name=${category}`}
-                    className="text-decoration-none"
-                    style={{ color: "black" }}
-                  >
-                    {category}
-                  </Link>
-                </NavDropdown.Item>
-              ))}
-            </NavDropdown>
+          <Nav className="my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
+            <li className="nav-item dropdown">
+              <Link className="nav-link dropdown-toggle" to="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</Link>
+              <ul className="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                {state.category.map((category, index) => (
+                  <li key={index}><Link to={`/category?name=${category}`} className="text-decoration-none dropdown-item">{category}</Link></li>
+                ))}
+              </ul>
+            </li>
           </Nav>
           <InputGroup
             size="sm"
