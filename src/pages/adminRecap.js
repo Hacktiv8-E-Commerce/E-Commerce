@@ -54,7 +54,7 @@ const AdminRecap = () => {
             <tr className="fw-bold">
               <td colSpan="4">Total Income</td>
               <td>
-                ${state.recap.reduce((total, item) => total + item.total, 0)}
+                ${state.recap.reduce((total, item) => total + item.total, 0).toFixed(2)}
               </td>
             </tr>
           </tbody>

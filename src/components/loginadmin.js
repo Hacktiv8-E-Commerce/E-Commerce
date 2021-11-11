@@ -36,7 +36,7 @@ export default function LoginAdmin() {
           </p>
           <div className="form-outline form-white mb-4">
             <label className="form-label" htmlFor="typeEmailX">
-              Email
+              Username
             </label>
             <input
               onChange={(e) =>
@@ -50,7 +50,6 @@ export default function LoginAdmin() {
               className="form-control form-control-lg"
             />
           </div>
-
           <div className="form-outline form-white mb-4">
             <label className="form-label" htmlFor="typePasswordX">
               Password
@@ -67,16 +66,12 @@ export default function LoginAdmin() {
               className="form-control form-control-lg"
             />
           </div>
-
-          <p className="small mb-5 pb-lg-2">
-            <a className="text-white-50" href="#!">
-              Forgot password?
-            </a>
-          </p>
+          <p className="small mb-5 pb-lg-2"></p>
           <button
             className="btn btn-outline-light btn-lg px-5"
             type="submit"
             onClick={() => login()}
+            disabled={state.infouser[0].trim() === '' || state.infouser[1].trim() === '' ? true : false}
           >
             Login
           </button>
@@ -91,15 +86,6 @@ export default function LoginAdmin() {
               <i className="fab fa-google fa-lg"></i>
             </a>
           </div>
-        </div>
-
-        <div>
-          <p className="mb-0">
-            Don't have an account?{" "}
-            <a href="#!" className="text-white-50 fw-bold">
-              Sign Up
-            </a>
-          </p>
         </div>
       </div>
     </div>
