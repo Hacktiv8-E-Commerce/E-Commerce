@@ -31,6 +31,6 @@ Admin side can manage product stock update and shows total sales recap.
 To access admin side add `/loginadmin` in url 
 and login using username: `admin`  and password: `admin`
 
-## test
+## test locally
 
 use incognito mode to test functionality
