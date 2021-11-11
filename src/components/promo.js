@@ -16,21 +16,21 @@ function Promo() {
                 <Carousel.Item>
                     <Image
                         className="d-block w-100"
-                        src="./assets/banner.jpg"
+                        src="./assets/banner-two.jpg"
                         alt="First slide"
                     />
                 </Carousel.Item>
                 <Carousel.Item>
                     <Image
                         className="d-block w-100"
-                        src="./assets/banner.jpg"
+                        src="./assets/banner-one.jpg"
                         alt="First slide"
                     />
                 </Carousel.Item>
                 <Carousel.Item>
                     <Image
                         className="d-block w-100"
-                        src="./assets/banner.jpg"
+                        src="./assets/banner-three.jpg"
                         alt="First slide"
                     />
                 </Carousel.Item>
