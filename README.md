@@ -2,6 +2,10 @@
 
 Hacktiv8 Kampus Merdeka final project E-Commerce
 
+### Deployment link
+
+Deployed using Vercel: http://e-commerce-mu.vercel.app/
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -10,25 +14,23 @@ In the project directory, you can run:
 
 Instaliing all dependencies needed to run this app.
 
-### `yarn start`
+## Data
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+all product and users data from https://fakestoreapi.com/
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Customer side
+This app support all users from https://fakestoreapi.com/users to login and do activity such as add to cart, and checkout
+Login using username and password
+EX: 
+  username: `kevinryan`
+  password: `kev02937@`
+  
+## Admin side
 
-### `yarn test`
+Admin side can manage product stock update and shows total sales recap.
+To access admin side add `/loginadmin` in url 
+and login using username: `admin`  and password: `admin`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## test
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+use incognito mode to test functionality
